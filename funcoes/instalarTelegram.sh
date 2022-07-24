@@ -11,6 +11,7 @@ instalar_telegram() {
   tar xf $nome_telegram_extensao 
   mv Telegram $HOME
   echo 
-  echo "----- FEITO (/) ----------------------------------------------------------------"
+  echo "----- FEITO (13 / $TOTAL) ----------------------------------------------------------"
 }
 
+instalar_telegram

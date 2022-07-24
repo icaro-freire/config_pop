@@ -1,5 +1,5 @@
 
-# url's de alguns programas para instalação -----------------------------------
+# url's de alguns programas para instalação ===================================
 
 URL_TELEGRAM='https://telegram.org/dl/desktop/linux'
 URL_TOR='https://www.torproject.org/dist/torbrowser/11.5/tor-browser-linux64-11.5_en-US.tar.xz'

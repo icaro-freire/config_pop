@@ -17,6 +17,7 @@
 TMP_INSTALACAO=$HOME/Downloads/tmp_instalacao  
 HOME_TESTE=$HOME/Downloads/home_teste
 ARQUIVO_ZSHRC=$HOME/.zshrc
+TOTAL=13
 
 # carregando diversas listas para instalação ==================================
 
@@ -28,27 +29,27 @@ source ./funcoes/flatpakLista.sh #---------> lista para instalação via flatpak
 
 # iniciando o processo ########################################################
 
-source ./funcoes/tmpInstalacao.sh #-------------> cria diretórios temporários 
-source ./funcoes/ppaAdicionar.sh #--------------> adiciona ppa's de programas
+source ./funcoes/tmpInstalacao.sh #-------------> cria diretórios temporários   .01
+#source ./funcoes/ppaAdicionar.sh #--------------> adiciona ppa's de programas   .02
 
 # carregando as funções para instalação =======================================
 
-#source ./funcoes/instalarGit.sh #--------------> instala o git (com ppa)
-source ./funcoes/instalarApt.sh #---------------> instala programas via apt
-source ./funcoes/instalarSl.sh #----------------> instala o sl (tremzinho)
-source ./funcoes/instalarFlatpak.sh #-----------> instala programas via flatpak
-#source ./funcoes/instalarLua.sh #--------------> instala o lua
-#source ./funcoes/instalarNerdFonts.sh #--------> instala as nerf-fonts
-#source ./funcoes/instalarNeovim.sh #-----------> instala o neovim
-#source ./funcoes/instalarOhMyZsh.sh #----------> instala o oh my zsh 
+#source ./funcoes/instalarGit.sh #--------------> instala o git (com ppa)       .03
+source ./funcoes/instalarApt.sh #---------------> instala programas via apt     .04
+source ./funcoes/instalarSl.sh #----------------> instala o sl (tremzinho)      .05
+source ./funcoes/instalarFlatpak.sh #-----------> instala programas via flatpak .06
+#source ./funcoes/instalarLua.sh #--------------> instala o lua                 .07
+#source ./funcoes/instalarNerdFonts.sh #--------> instala as nerf-fonts         .08
+#source ./funcoes/instalarNeovim.sh #-----------> instala o neovim              .09
+#source ./funcoes/instalarOhMyZsh.sh #----------> instala o oh my zsh           .10
 
-#source ./funcoes/instalarTor.sh #--------------> instala o tor browser
-#source ./funcoes/instalarLuakit.sh #-----------> instala o luakit web browser
-#source ./funcoes/instalarTelegram.sh #---------> instala o telegram
+#source ./funcoes/instalarTor.sh #--------------> instala o tor browser         .11
+#source ./funcoes/instalarLuakit.sh #-----------> instala o luakit web browser  .12
+#source ./funcoes/instalarTelegram.sh #---------> instala o telegram            .13
 
 # finalizando a instalação ====================================================
 
-source ./funcoes/limpeza.sh #-------------------> remove diretórios temporários
+source ./funcoes/limpeza.sh #-------------------> remove diretórios temporários 
 #                                                 atualiza repositórios
 #                                                 atualiza programas 
 #                                                 efetua limpeza de pacotes

@@ -1,7 +1,7 @@
 
 ppa_adicionar () {
   echo 
-  echo "##### adicionando ppa's ======================================================="
+  echo "##### adicionando ppa's ========================================================"
   echo 
   echo " # atualizando os repositórios..."
   echo 
@@ -16,5 +16,7 @@ ppa_adicionar () {
   echo 
   sudo apt update 
   echo
-  echo "----- FEITO (1/) =============================================================="
+  echo "----- FEITO (2 / $TOTAL ) -----------------------------------------------------------"
 }
+
+ppa_adicionar

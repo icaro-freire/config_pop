@@ -26,6 +26,7 @@ instalar_luakit() {
   make
   sudo make install
   echo
-  echo "----- FEITO () -----------------------------------------------------------------"
+  echo "----- FEITO (12 / $TOTAL) ----------------------------------------------------------"
 }
 
+instalar_luakit

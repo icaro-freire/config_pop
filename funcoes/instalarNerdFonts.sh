@@ -17,6 +17,7 @@ instalar_NerdFontes () {
   echo 
   sudo fc-cache -fv
   echo 
-  echo "----- FEITO (/) ----------------------------------------------------------------"
+  echo "----- FEITO (8 / $TOTAL) ------------------------------------------------------------"
 }
 
+instalar_NerdFontes

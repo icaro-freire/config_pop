@@ -17,6 +17,7 @@ instalar_tor() {
   echo " # movendo para HOME..." 
   mv tor-browser_en-US $HOME
   echo
-  echo "----- FEITO (/) ----------------------------------------------------------------"
+  echo "----- FEITO (11 / $TOTAL) ----------------------------------------------------------"
 }
 
+instalar_tor

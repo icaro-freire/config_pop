@@ -30,6 +30,7 @@ instalar_ohmyzsh() {
   echo " # dando source no zshrc..."
   echo 
   source $ARQUIVO_ZSHRC
-  echo "----- FEITO (/) ----------------------------------------------------------------"
+  echo "----- FEITO (10 / $TOTAL) ----------------------------------------------------------"
 }
 
+instalar_ohmyzsh

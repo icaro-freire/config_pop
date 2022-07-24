@@ -16,10 +16,10 @@ limpeza (){
   sudo apt autoremove -y 
   # mensagem final ------------------------------------------------------------- 
   echo 
-  echo "----- FEITO () -----------------------------------------------------------------"
-  echo 
   echo "##### Instalações e configurações concluídas" 
   echo "##### Lembrar de configurar:"
   echo "      - Telegram"
   echo "      - Neovim"
 }
+
+limpeza

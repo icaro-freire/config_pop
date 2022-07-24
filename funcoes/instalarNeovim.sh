@@ -34,5 +34,7 @@ instalar_neovim() {
   echo " # tornando o Neovim o editor padrão para o Git"
   git config --global core.editor nvim
   echo 
-  echo "----- Feito ( / ) -------------------------------------------------------------"
+  echo "----- Feito (9 / $TOTAL) ------------------------------------------------------------"
 }
+
+instalar_neovim

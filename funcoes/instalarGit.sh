@@ -16,6 +16,7 @@ instalar_git() {
   git config --global user.name $usuario_git
   git config --global user.email $email_git
   echo 
-  echo "----- FEITO (1/) ---------------------------------------------------------------"
+  echo "----- FEITO (3 / $TOTAL) ------------------------------------------------------------"
 }
 
+instalar_git
