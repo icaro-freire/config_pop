@@ -11,7 +11,7 @@ instalar_luakit() {
     if ! dpkg -l | grep $programa_luakit; then
       sudo apt install $programa_luakit -y
       else
-        "  ### $programa_luakit --- [INSTALADO]"
+        "  ### [INSTALADO] --- $programa_luakit "
     fi 
   done
   cd $TMP_INSTALACAO

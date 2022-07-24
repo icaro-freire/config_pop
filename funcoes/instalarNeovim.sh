@@ -15,7 +15,7 @@ instalar_neovim() {
     if ! dpkg -l | grep -q $programa_nvim; then
       sudo apt install $programa_nvim -y
     else
-      echo "  ### $programa_nvim --- [INSTALADO]"
+      echo "  ### [INSTALADO] --- $programa_nvim "
     fi 
   done
   echo 

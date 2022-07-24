@@ -7,7 +7,7 @@ instalar_sl(){
   echo 
   sudo apt install sl -y 
   echo 
-  echo "----- FEITO (5 / $TOTAL) ------------------------------------------------------------" 
+  echo "----- FEITO (5 / $TOTAL) -----------------------------------------------------------" 
 }
 
 instalar_sl

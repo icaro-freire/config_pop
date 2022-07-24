@@ -11,11 +11,11 @@ instalar_apt() {
     if ! dpkg -l | grep -q $programa_apt; then
       sudo apt install $programa_apt -y
     else
-      echo "  ### $programa_apt --- [INSTALADO]"
+      echo "  ### [INSTALADO] --- $programa_apt "
     fi
   done
   echo 
-  echo "----- FEITO (4 / $TOTAL) ------------------------------------------------------------"
+  echo "----- FEITO (4 / $TOTAL) -----------------------------------------------------------"
 }
 
 instalar_apt

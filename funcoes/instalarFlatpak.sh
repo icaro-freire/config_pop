@@ -9,11 +9,11 @@ instalar_flatpak() {
     if ! flatpak list | grep -q $programa_flatpak; then
      flatpak install flathub $programa_flatpak -y
     else
-      echo "  ### $programa_flatpak --- [INSTALADO]"
+      echo "  ### [INSTALADO] --- $programa_flatpak "
     fi
   done
   echo
-  echo "----- FEITO (6 / $TOTAL) -------------------------------------------------------------"
+  echo "----- FEITO (6 / $TOTAL) -----------------------------------------------------------"
 }
 
 instalar_flatpak

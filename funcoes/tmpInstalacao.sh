@@ -6,7 +6,7 @@ tmp_instalacao () {
   echo "##### criando diretório temporário para instalação =============================" 
   echo 
   mkdir -p $TMP_INSTALACAO 
-  echo "----- FEITO (1 / $TOTAL) ------------------------------------------------------------"
+  echo "----- FEITO (1 / $TOTAL) -----------------------------------------------------------"
 
 }
 

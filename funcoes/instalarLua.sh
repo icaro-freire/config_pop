@@ -29,7 +29,7 @@ instalar_lua(){
   echo " # instalando... "
   sudo make install 
   echo
-  echo "----- FEITO (7 / $TOTAL) ------------------------------------------------------------"
+  echo "----- FEITO (7 / $TOTAL) -----------------------------------------------------------"
 }
 
 instalar_lua

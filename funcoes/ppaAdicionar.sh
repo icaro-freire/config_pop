@@ -16,7 +16,7 @@ ppa_adicionar () {
   echo 
   sudo apt update 
   echo
-  echo "----- FEITO (2 / $TOTAL ) -----------------------------------------------------------"
+  echo "----- FEITO (2 / $TOTAL) -----------------------------------------------------------"
 }
 
 ppa_adicionar
