@@ -45,7 +45,7 @@ source ./funcoes/instalarFlatpak.sh #----------> instala programas via flatpak  
 #source ./funcoes/instalarTor.sh #--------------> instala o tor browser          .11
 #source ./funcoes/instalarLuakit.sh #-----------> instala o luakit web browser   .12
 #source ./funcoes/instalarTelegram.sh #---------> instala o telegram             .13
-
+source ./funcoes/adicionarBin.sh #--------------> adiciona scripts em ~/bin     .14
 # finalizando a instalação ====================================================
 
 source ./funcoes/limpeza.sh #------------------> remove diretórios temporários 

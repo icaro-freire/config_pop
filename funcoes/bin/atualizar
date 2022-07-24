@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#==============================================================================
+# Nome     : atualizar
+#            Copyright (c) 2022 Ícaro Vidal Freire 
+#------------------------------------------------------------------------------
+# Descrição: Função para atualizar repositórios apt e flatpak, além de fazer 
+#            uma limpeza básica em pacotes obsoletos ou arquivos de downloads 
+#            interrompidos.
+# Licença  : The MIT License (MIT)
+# Versão   : 0.1.0
+#------------------------------------------------------------------------------
+# Como usar: Digitar 'atualizar', no terminal  
+#==============================================================================
+
+# construindo a função -------------------------------------------------------
+
+atualizar() {
+  echo "  # Atualizando repositórios ===================================== (1/4)"
+  echo
+  sudo apt update
+  echo 
+  echo "  # Verificando intalação de programas =========================== (2/4)"
+  echo
+  sudo apt install
+  echo 
+  echo "  # Verificando atualizações no flatpak ========================== (3/4)"
+  echo 
+  flatpak update 
+  echo 
+  echo "  # Executando comandos para limpeza ============================= (4/4)"
+  echo 
+  sudo apt autoclean
+  sudo apt autoremove
+}
+
+# rodando a função ------------------------------------------------------------
+
+atualizar
+
+# fim do script ---------------------------------------------------------------
+
+exit 
+
