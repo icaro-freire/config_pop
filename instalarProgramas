@@ -12,430 +12,47 @@
 # Como usar: No diretório onde se encontra o arquivo, rodar '/.intalarProgramas'
 #==============================================================================
 
-# variáveis fundamentais ======================================================
+# definindo variáveis fundamentais para o script ou instalação ================
 
 TMP_INSTALACAO=$HOME/Downloads/tmp_instalacao  
 HOME_TESTE=$HOME/Downloads/home_teste
 ARQUIVO_ZSHRC=$HOME/.zshrc
 
-# url's fundamentais ==========================================================
+# carregando diversas listas para instalação ==================================
 
-URL_TELEGRAM='https://telegram.org/dl/desktop/linux'
-URL_TOR='https://www.torproject.org/dist/torbrowser/11.5/tor-browser-linux64-11.5_en-US.tar.xz'
-URL_LUA='https://www.lua.org/ftp/lua-5.4.4.tar.gz'
-URL_FONTES='https://github.com/terroo/fonts.git'
-URL_NEOVIM='https://github.com/neovim/neovim'
-URL_LUAKIT='https://github.com/luakit/luakit.git'
+source ./funcoes/urlLista.sh #-------------> lista de url's 
+source ./funcoes/ppaLista.sh #-------------> lista de ppa's
+source ./funcoes/aptLista.sh #-------------> lista para instalação via apt
+source ./funcoes/depLista.sh #-------------> lista de dependências de programas
+source ./funcoes/flatpakLista.sh #---------> lista para instalação via flatpak
 
-# ppa's necessários ===========================================================
+# iniciando o processo ########################################################
 
-PPA_GIT="add-apt-repository ppa:git-core/ppa"
-PPA_INKSCAPE="add-apt-repository ppa:inkscape.dev/stable"
+source ./funcoes/tmpInstalacao.sh #-------------> cria diretórios temporários 
+source ./funcoes/ppaAdicionar.sh #--------------> adiciona ppa's de programas
 
-# lista de programas para instalação direta ===================================
+# carregando as funções para instalação =======================================
 
-## via apt -------------------------------------------------------------------
-PROGRAMAS_APT=(
-  inkscape
-  wget
-  cowsay
-  cmatrix
-  testdisk
-  wxmaxima
-  git-flow
-  zsh
-  zathura 
-  zathura-cb 
-  zathura-ps 
-  zathura-djvu
-  tree
-  locate
-)
+#source ./funcoes/instalarGit.sh #--------------> instala o git (com ppa)
+source ./funcoes/instalarApt.sh #---------------> instala programas via apt
+source ./funcoes/instalarSl.sh #----------------> instala o sl (tremzinho)
+source ./funcoes/instalarFlatpak.sh #-----------> instala programas via flatpak
+#source ./funcoes/instalarLua.sh #--------------> instala o lua
+#source ./funcoes/instalarNerdFonts.sh #--------> instala as nerf-fonts
+#source ./funcoes/instalarNeovim.sh #-----------> instala o neovim
+#source ./funcoes/instalarOhMyZsh.sh #----------> instala o oh my zsh 
 
-DEPENDENCIAS_NEOVIM=(
-  ninja-build 
-  gettext 
-  libtool 
-  libtool-bin 
-  autoconf 
-  automake 
-  cmake 
-  g++ 
-  pkg-config 
-  unzip 
-  curl 
-  doxygen
-)
-
-DEPENDENCIAS_LUAKIT=(
-  libgtk-3-dev 
-  libsqlite3-dev 
-  lua5.1 
-  webkit2gtk-4.0 
-  libluajit-5.1-dev 
-  lua-filesystem
-  gstreamer1.0-plugins-base
-  libgstreamer1.0-dev 
-  libgstreamer-plugins-base1.0-dev 
-  libgstreamer-plugins-bad1.0-dev 
-  gstreamer1.0-plugins-good 
-  gstreamer1.0-plugins-bad 
-  gstreamer1.0-plugins-ugly 
-  gstreamer1.0-libav 
-  gstreamer1.0-doc 
-  gstreamer1.0-tools 
-  gstreamer1.0-x 
-  gstreamer1.0-alsa 
-  gstreamer1.0-gl 
-  gstreamer1.0-gtk3 
-  gstreamer1.0-qt5 
-  gstreamer1.0-pulseaudio
-)
-
-## via flatpak ---------------------------------------------------------------
-PROGRAMAS_FLATPAK=(
-  org.octave.Octave
-  org.kde.okular
-)
-
-# diretórios temporários para download de arquivos ============================
-
-echo 
-echo "  --- Criando diretório temporário para download de arquivos de instalação"
-mkdir -p $TMP_INSTALACAO
-echo 
-
-# adicionando ppa's ===========================================================
-
-echo 
-echo "  --- Adicionando os PPA's ==============================================="
-echo 
-echo " # atualizando os repositórios"
-echo 
-sudo apt update
-echo 
-echo " # adicionado ppa's"
-echo 
-sudo $PPA_GIT
-sudo $PPA_INKSCAPE
-echo 
-echo " # atualizando novamente os repositórios após as adições anteriores"
-echo 
-sudo apt update
-echo 
-
-# funções de instalação =======================================================
-
-## instalar neovim -----------------------------------------------------------  (OK)
-
-instalar_neovim() {
-  echo 
-  echo "  --- Instalação do neovim ============================================="
-  echo
-  echo " # atualizando repositórios... "
-  echo 
-  sudo apt update -y
-  echo 
-  echo " # instalando dependências... "
-  echo 
-  for programa_nvim in ${DEPENDENCIAS_NEOVIM[@]}; do 
-    if ! dpkg -l | grep -q $programa_nvim; then
-      sudo apt install $programa_nvim -y
-    else
-      echo "  ### $programa_nvim - já instalado!"
-    fi 
-  done
-  echo 
-  cd $TMP_INSTALACAO
-  echo " # clonando o repositório do neovim... "
-  echo 
-  git clone $URL_NEOVIM 
-  cd neovim 
-  echo " # construindo o neovim... "
-  echo
-  make CMAKE_BUILD_TYPE=Release
-  echo 
-  echo " # instalando o neovim... "
-  sudo make install 
-  echo 
-  echo "Tornando o Neovim o editor padrão para o Git"
-  git config --global core.editor nvim
-  echo 
-  echo "--- Neovim instalado ( / )"
-  echo "##########################"
-  echo
-}
-
-## instalar nerd fonts -------------------------------------------------------  (OK)
-
-instalar_nerd-fonts() {
-  echo 
-  echo "  --- Instalando as Nerd Fonts ========================================="
-  echo
-  mkdir -p $HOME/.local/share/fonts 
-  cd $TMP_INSTALACAO
-  git clone $URL_FONTES
-  cd fonts/fonts 
-  mv *.ttf *.otf $HOME/.local/share/fonts/
-  sudo fc-cache -fv
-  echo 
-  echo "--- Nerd Fonts instaladas (/)"
-  echo "##############################"
-}
-
-
-## instalar oh my zsh --------------------------------------------------------  (OK)
-
-instalar_ohmyzsh() {
-  echo 
-  echo "  --- Instalando o Oh My ZSH ==========================================="
-  echo 
-  cd $HOME
-  echo " # instalando via wget..."
-  echo
-  sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-  echo 
-  echo " # mudando o tema para bira..."
-  echo
-  sed -i '11 s/robbyrussell/bira/g' $ARQUIVO_ZSHRC 
-  echo 
-  echo " # definindo como shell padrão..."
-  echo
-  sudo usermod -s /usr/bin/zsh $(whoami)
-  echo 
-  echo " # clonando repositórios de plugins -- zsh-autosuggestions e zsh-syntax-highlighting..."
-  echo
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
-  echo 
-  echo " # ativando os plugins nas configurações..."
-  echo
-  sed -i '73 s/git/git git-flow gitignore zsh-syntax-highlighting zsh-autosuggestions/g' $ARQUIVO_ZSHRC
-  echo 
-  echo " # dando source no zshrc..."
-  echo 
-  source $ARQUIVO_ZSHRC
-  echo "--- Oh My ZSH instalado e configurado (/)"
-  echo "##########################################"
-  echo
-}
-
-## instalar Luakit -----------------------------------------------------------
-
-instalar_luakit() {
-  echo 
-  echo "  --- Instalando o brower Luakit ======================================="
-  echo 
-  echo " # instalando dependências... "
-  echo 
-  for programa_luakit in ${DEPENDENCIAS_LUAKIT[@]}; do 
-    if ! dpkg -l | grep $programa_luakit; then
-      sudo apt install $programa_luakit -y
-      else
-        "  ### $programa_luakit --- [INSTALADO]"
-    fi 
-  done
-  cd $TMP_INSTALACAO
-  echo 
-  echo " # clonando o repositório... "  
-  echo 
-  git clone $URL_LUAKIT
-  cd luakit
-  echo 
-  echo " # Construindo e instalando o Luakit... "
-  echo 
-  make
-  sudo make install
-  echo
-  echo "--- Luakit instalado (/)"
-  echo "########################"
-  echo 
-}
-
-## instalar Tor Browser ------------------------------------------------------ (OK)
-instalar_tor() {
-  nome_tor_extensao=`basename $URL_TOR`
-  echo 
-  echo "  --- Instalando o Tor Browser ========================================="
-  echo
-  cd $TMP_INSTALACAO
-  echo " # fazendo o download..."
-  echo 
-  wget $URL_TOR
-  echo 
-  echo " # extraindo arquivos..."
-  echo 
-  tar xf $nome_tor_extensao 
-  echo " # movendo para HOME..." 
-  mv tor-browser_en-US $HOME
-  echo
-  echo "--- Tor Browser instalado (/)"
-  echo "##############################"
-  echo
-}
-
-## instalar Telegram ---------------------------------------------------------  (OK)
-instalar_telegram() {
-  nome_telegram_extensao=`basename $URL_TELEGRAM`
-  echo 
-  echo "  --- Instalando o Telegram ============================================"
-  echo 
-  cd $TMP_INSTALACAO
-  wget $URL_TELEGRAM
-  tar xf $nome_telegram_extensao 
-  mv Telegram $HOME
-  echo 
-  echo "--- Telegram instalado (/)"
-  echo "###########################"
-  echo 
-}
-
-## instalar lua --------------------------------------------------------------  (OK)
-
-instalar_lua(){
-  # variável para nome do arquivo com extensão
-  nome_lua_extensao=`basename $URL_LUA`
-  nome_lua=`basename $URL_LUA .tar.gz`
-  echo 
-  echo "  --- Instalando lua ==================================================="
-  echo 
-  cd $TMP_INSTALACAO 
-  echo " # fazendo download..."
-  echo 
-  wget $URL_LUA
-  echo 
-  echo " # extraindo os arquivos..."
-  tar xzf $nome_lua_extensao
-  echo 
-  echo " # entrando no diretório..."
-  cd $nome_lua
-  echo 
-  echo " # construindo lua..."
-  make
-  echo 
-  echo " # verificando se tudo ocorreu bem..."
-  echo 
-  make test 
-  echo 
-  echo " # instalando... "
-  sudo make install 
-  echo
-  echo "--- Lua instalado (5/ )"
-  echo "#######################"
-  echo 
-}
-
-## instalar programas via flatpak --------------------------------------------  (OK)
-
-instalar_flatpak() {
-  echo 
-  echo "  --- Instalando lista de programas via Flatpak ========================"
-  echo 
-  for programa_flatpak in ${PROGRAMAS_FLATPAK[@]}; do
-    if ! flatpak list | grep -q $programa_flatpak; then
-     flatpak install flathub $programa_flatpak -y
-    else
-      echo "  ### $programa_flatpak --- [INSTALADO]"
-    fi
-  done
-  echo
-  echo "--- Programas via flatpak instalados (4/)"
-  echo "##########################################"
-  echo
-}
-
-## instalar sl ================================================================ (OK)
-
-instalar_sl(){
-  echo 
-  echo "  --- Instalando o programa sl ========================================="
-  echo 
-  sudo apt install sl -y 
-  echo 
-  echo "--- Programa instalado (3/)" 
-  echo "############################" 
-  echo 
-}
-
-## instalar lista de programas com apt ======================================== (OK)
-
-instalar_apt() {
-  echo 
-  echo "  --- Instalando lista de programas com apt ============================"
-  echo
-  echo " # começando a instalação..."
-  echo 
-  for programa_apt in ${PROGRAMAS_APT[@]}; do
-    if ! dpkg -l | grep -q $programa_apt; then
-      sudo apt install $programa_apt -y
-    else
-      echo "  ### $programa_apt --- [INSTALADO]"
-    fi
-  done
-  echo 
-  echo "--- Programas da lista de apt instalados (2/)"
-  echo "#############################################"
-  echo 
-}
-
-# instalando o Git (com ppa) -------------------------------------------------  (OK)
-
-instalar_git() {
-  echo 
-  echo "  --- Instalando o Git ================================================="
-  echo 
-  sudo apt install git -y
-  echo 
-  echo " # configurações iniciais "
-  echo 
-  read -p "Digite o e-mail: " email_git
-  read -p "Digite o usuário: " usuario_git
-  echo 
-  echo " # adicionando usuário e email às configurações do Git" 
-  git config --global user.name $usuario_git
-  git config --global user.email $email_git
-  echo 
-  echo "--- Git instalado (1/)"
-  echo "#######################"
-  echo
-}
-
-# chamando as funções de instalação ===========================================
-
-#instalar_git
-instalar_apt 
-instalar_sl
-instalar_flatpak
-#instalar_lua
-#instalar_nerd-fonts
-#instalar_neovim
-
-
-#instalar_ohmyzsh
-
-#instalar_telegram
-#instalar_tor
-#instalar_luakit
+#source ./funcoes/instalarTor.sh #--------------> instala o tor browser
+#source ./funcoes/instalarLuakit.sh #-----------> instala o luakit web browser
+#source ./funcoes/instalarTelegram.sh #---------> instala o telegram
 
 # finalizando a instalação ====================================================
 
-# removendo diretório temporário ---------------------------------------------
-echo 
-echo "  --- Removendo diretório temporário junto com arquivos não mais necessários"
-rm $TMP_INSTALACAO -r 
+source ./funcoes/limpeza.sh #-------------------> remove diretórios temporários
+#                                                 atualiza repositórios
+#                                                 atualiza programas 
+#                                                 efetua limpeza de pacotes
 
-# limpeza e CIA --------------------------------------------------------------
-echo 
-echo "  --- Atualizações e Limpeza "
-echo
-sudo apt update && sudo apt upgrade -y
-flatpak update -y
-sudo apt autoclean -y
-sudo apt autoremove -y
-
-# mensagem final -------------------------------------------------------------
-echo 
-echo "  --- Instalações e configurações concluídas"
-echo "  --- Faça Reboot e Configure"
+###############################################################################
 
 exit
