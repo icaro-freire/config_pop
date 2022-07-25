@@ -16,5 +16,6 @@ PROGRAMAS_APT=(
   zathura-djvu
   tree
   locate
+  shellcheck
 )
 
