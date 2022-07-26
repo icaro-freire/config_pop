@@ -5,7 +5,7 @@ limpeza (){
   echo "##### Iniciando a limpeza ======================================================"
   echo 
   echo " # removendo diretório tmp_instalacao..." 
-  rm $TMP_INSTALACAO -r 
+  rm "$TMP_INSTALACAO" -r 
   # limpeza e CIA -------------------------------------------------------------- 
   echo 
   echo " # atualizações e limpeza..." 

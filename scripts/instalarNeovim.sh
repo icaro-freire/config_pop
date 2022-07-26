@@ -11,19 +11,19 @@ instalar_neovim() {
   echo 
   echo " # instalando dependências... "
   echo 
-  for programa_nvim in ${DEPENDENCIAS_NEOVIM[@]}; do 
-    if ! dpkg -l | grep -q $programa_nvim; then
-      sudo apt install $programa_nvim -y
+  for programa_nvim in "${DEPENDENCIAS_NEOVIM[@]}"; do 
+    if ! dpkg -l | grep -q "$programa_nvim"; then
+      sudo apt install "$programa_nvim" -y
     else
       echo "  ### [INSTALADO] --- $programa_nvim "
     fi 
   done
   echo 
-  cd $TMP_INSTALACAO
+  cd "$TMP_INSTALACAO" || { echo "Erro na construção do diretório"; exit 1; }
   echo " # clonando o repositório do neovim... "
   echo 
-  git clone $URL_NEOVIM 
-  cd neovim 
+  git clone "$URL_NEOVIM" 
+  cd neovim || { echo "Erro na construção do diretório"; exit 1; }
   echo " # construindo o neovim... "
   echo
   make CMAKE_BUILD_TYPE=Release

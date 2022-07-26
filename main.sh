@@ -14,9 +14,9 @@
 
 # definindo variáveis fundamentais para o script ou instalação ================
 
-TMP_INSTALACAO=$HOME/Downloads/tmp_instalacao  
-HOME_TESTE=$HOME/Downloads/home_teste
-ARQUIVO_ZSHRC=$HOME/.zshrc
+TMP_INSTALACAO="$HOME/Downloads/tmp_instalacao"
+HOME_TESTE="$HOME/Downloads/home_teste"
+ARQUIVO_ZSHRC="$HOME/.zshrc"
 TOTAL=15
 
 # carregando diversas listas para instalação ==================================

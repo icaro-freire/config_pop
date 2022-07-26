@@ -13,8 +13,8 @@ instalar_git() {
   read -p "Digite o usuário: " usuario_git
   echo 
   echo " # adicionando usuário e email às configurações do Git" 
-  git config --global user.name $usuario_git
-  git config --global user.email $email_git
+  git config --global user.name "$usuario_git"
+  git config --global user.email "$email_git"
   echo 
   echo "----- FEITO (3 / $TOTAL) -----------------------------------------------------------"
 }

@@ -3,21 +3,21 @@
 
 instalar_lua(){
   # variável para nome do arquivo com extensão
-  nome_lua_extensao=`basename $URL_LUA`
-  nome_lua=`basename $URL_LUA .tar.gz`
+  nome_lua_extensao=$(basename "$URL_LUA")
+  nome_lua=$(basename "$URL_LUA" .tar.gz)
   echo 
   echo "##### Instalando lua ==========================================================="
   echo 
-  cd $TMP_INSTALACAO 
+  cd "$TMP_INSTALACAO" || { echo "Erro na construção do diretório"; exit 1; } 
   echo " # fazendo download..."
   echo 
-  wget $URL_LUA
+  wget "$URL_LUA"
   echo 
   echo " # extraindo os arquivos..."
-  tar xzf $nome_lua_extensao
+  tar xzf "$nome_lua_extensao"
   echo 
   echo " # entrando no diretório..."
-  cd $nome_lua
+  cd "$nome_lua" || { echo "Erro na construção do diretório"; exit 1; }
   echo 
   echo " # construindo lua..."
   make

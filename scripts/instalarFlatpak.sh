@@ -5,9 +5,9 @@ instalar_flatpak() {
   echo 
   echo "##### Instalando lista de programas via Flatpak ================================"
   echo 
-  for programa_flatpak in ${PROGRAMAS_FLATPAK[@]}; do
-    if ! flatpak list | grep -q $programa_flatpak; then
-     flatpak install flathub $programa_flatpak -y
+  for programa_flatpak in "${PROGRAMAS_FLATPAK[@]}"; do
+    if ! flatpak list | grep -q "$programa_flatpak"; then
+     flatpak install flathub "$programa_flatpak" -y
     else
       echo "  ### [INSTALADO] --- $programa_flatpak "
     fi

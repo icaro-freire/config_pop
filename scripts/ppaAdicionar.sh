@@ -9,8 +9,8 @@ ppa_adicionar () {
   echo 
   echo " # adicionado ppa's..." 
   echo 
-  sudo $PPA_GIT 
-  sudo $PPA_INKSCAPE 
+  sudo "$PPA_GIT" 
+  sudo "$PPA_INKSCAPE" 
   echo  
   echo " # atualizando novamente os repositórios após as adições anteriores" 
   echo 
