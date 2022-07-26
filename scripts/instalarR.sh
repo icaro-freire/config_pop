@@ -27,32 +27,71 @@ PACOTES_CRAN=(
 ## função para instalação -----------------------------------------------------
 
 instalar_R () {
-  # instalar lsb-release
+  echo 
+  echo "##### Ininicando a instalação do R ============================================="
+  echo 
+  echo " # instalando lsb-release..."
+  echo 
+  #----------------------------------------------------------------------------
   sudo apt update -qq 
   sudo apt -y install lsb-release
-  # adicionando chave GPG
+  #----------------------------------------------------------------------------
+  echo
+  echo " # adicionando chave GPG..."
+  echo
+  #----------------------------------------------------------------------------
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-  # adicionando CRAN
+  #----------------------------------------------------------------------------
+  echo 
+  echo " # adicionando repositório do CRAN..."
+  echo 
+  #----------------------------------------------------------------------------
   sudo echo "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" | sudo tee -a /etc/apt/sources.list
-  # instalando o R 
+  #----------------------------------------------------------------------------
+  echo " # instalando o R... "
+  echo 
+  #----------------------------------------------------------------------------
   sudo apt update -qq
   sudo apt install r-base
-  # instalando o java 
+  #----------------------------------------------------------------------------
+  echo 
+  echo " # instalando o Java..."
+  echo 
+  #----------------------------------------------------------------------------
   sudo apt install -y default-jre
   sudo apt install -y default-jdk
-  # setando o caminho para o java 
+  #----------------------------------------------------------------------------
+  echo 
+  echo " # setando o caminho para o java... "
+  echo 
+  #----------------------------------------------------------------------------
   sudo R CMD javareconf
-  # instalando o rJava 
+  #----------------------------------------------------------------------------
+  echo 
+  echo " # instalando o rJava..."
+  echo 
+  #----------------------------------------------------------------------------
   Rscript -e 'install.packages("rJava", dependencies=TRUE)'
-  # instalando dependências para o tidyverse 
+  #----------------------------------------------------------------------------
+  echo 
+  echo " # instalando dependências para o tidyverse... "
+  echo 
+  #----------------------------------------------------------------------------
   sudo apt install libssl-dev -y
   sudo apt install libcurl4-openssl-dev -y
   sudo apt install libxml2-dev -y
-  # instalando pacotes do CRAN (vai demorar)
+  #----------------------------------------------------------------------------
+  echo 
+  echo " # instalando pacotes do CRAN (vai demorar)..."
+  echo
+  #----------------------------------------------------------------------------
   for programas_cran in "${PACOTES_CRAN[@]}"
   do 
     Rscript -e "install.packages($programas_cran, dependencies=TRUE)"
   done
+  #----------------------------------------------------------------------------
+  echo
+  echo "----- FEITO (16 / $TOTAL) ----------------------------------------------------------"
 }
 
 instalar_R

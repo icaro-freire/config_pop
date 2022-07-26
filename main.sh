@@ -47,6 +47,7 @@ source ./scripts/instalarLuakit.sh #-----------> instala o luakit web browser   
 source ./scripts/instalarTelegram.sh #---------> instala o telegram             .13
 source ./scripts/adicionarBin.sh #-------------> adiciona scripts em ~/bin      .14
 source ./scripts/instalarLaTeX.sh #------------> instala o MiKTeX               .15
+source ./scripts/instalarR.sh #----------------> instala e configura o R        .16
 
 
 # finalizando a instalação ====================================================
