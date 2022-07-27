@@ -4,26 +4,27 @@
 
 ---
 
-## Como usar
+## :computer: Como usar
 
-Passo 1. Clonar o repositório
+**Passo 1.** Clonar o repositório (o código abaixo é para https)
 
 ```{bash}
-git clone 
+git clone https://github.com/icaro-freire/config_pop.git
 ```
 
-Passo 2. Após o clone desse repositório, abra o terminal no diretório `config_pop` e 
+**Passo 2.** Após o clone desse repositório, abra o terminal no diretório `config_pop` e 
 execute:
 
 ```{bash}
 ./main.sh
 ```
 
-## Licença 
+## :pencil: Licença 
 
-- Não há garantias! Use por sua conta em risco!
 - A licença para os arquivos desse repositório é a MIT License (MIT)
+- Copyright :copyright: 2022 Ícaro Vidal Freire
+- Não há garantias! Use por sua conta em risco!
 
-## OBSERVAÇÃO 
+## :warning: OBSERVAÇÃO 
 
 :construction: Em construção :construction:
