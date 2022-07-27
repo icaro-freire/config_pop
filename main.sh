@@ -17,7 +17,7 @@
 TMP_INSTALACAO="$HOME/Downloads/tmp_instalacao"
 HOME_TESTE="$HOME/Downloads/home_teste"
 ARQUIVO_ZSHRC="$HOME/.zshrc"
-TOTAL=15
+TOTAL=17
 
 # carregando diversas listas para instalação ==================================
 
@@ -48,7 +48,7 @@ source ./scripts/instalarTelegram.sh #---------> instala o telegram             
 source ./scripts/adicionarBin.sh #-------------> adiciona scripts em ~/bin      .14
 source ./scripts/instalarLaTeX.sh #------------> instala o MiKTeX               .15
 source ./scripts/instalarR.sh #----------------> instala e configura o R        .16
-
+source ./scripts/instalarRStudio.sh #----------: instala o RStudio              .17
 
 # finalizando a instalação ====================================================
 
