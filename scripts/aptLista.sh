@@ -1,5 +1,5 @@
 
-# lista de programas para instalação via apt ==================================
+# lista de programas para instalação via apt ===============================
 
 PROGRAMAS_APT=(
   inkscape

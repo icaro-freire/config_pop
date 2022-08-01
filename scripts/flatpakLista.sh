@@ -1,5 +1,5 @@
 
-# programas para instalação via flatpak =======================================
+# programas para instalação via flatpak ====================================
 
 PROGRAMAS_FLATPAK=(
   org.octave.Octave

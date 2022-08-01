@@ -1,12 +1,12 @@
 
 limpeza (){ 
-  # removendo diretório temporário ---------------------------------------------
+  # removendo diretório temporário -----------------------------------------
   echo 
   echo "##### Iniciando a limpeza ======================================================"
   echo 
   echo " # removendo diretório tmp_instalacao..." 
   rm "$TMP_INSTALACAO" -r 
-  # limpeza e CIA -------------------------------------------------------------- 
+  # limpeza e CIA --------------------------------------------------------- 
   echo 
   echo " # atualizações e limpeza..." 
   echo 
@@ -14,7 +14,7 @@ limpeza (){
   flatpak update -y 
   sudo apt autoclean -y 
   sudo apt autoremove -y 
-  # mensagem final ------------------------------------------------------------- 
+  # mensagem final -------------------------------------------------------- 
   echo 
   echo "================================================================================"
   echo 

@@ -1,7 +1,7 @@
 
-# lista de dependências de programas para instalação ==========================
+# lista de dependências de programas para instalação =======================
 
-## lista de dependềncias do Neovim --------------------------------------------
+## lista de dependềncias do Neovim -----------------------------------------
 
 DEPENDENCIAS_NEOVIM=(
   ninja-build 
@@ -18,7 +18,7 @@ DEPENDENCIAS_NEOVIM=(
   doxygen
 )
 
-## lista de dependências do Luakit Web Broser ---------------------------------
+## lista de dependências do Luakit Web Broser ------------------------------
 
 DEPENDENCIAS_LUAKIT=(
   libgtk-3-dev 
