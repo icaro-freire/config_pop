@@ -16,22 +16,22 @@
 # construindo a função -------------------------------------------------------
 
 atualizar() {
-  echo "  # Atualizando repositórios ===================================== (1/4)"
+  echo "##### Update dos repositórios =========================================== (1/5)"
   echo
-  sudo apt update
+  sudo nala update
   echo 
-  echo "  # Verificando intalação de programas =========================== (2/4)"
-  echo
-  sudo apt install
+  echo "##### Upgrade dos repositórios ========================================== (2/5)"
   echo 
-  echo "  # Verificando atualizações no flatpak ========================== (3/4)"
+  sudo nala upgrade
+  echo 
+  echo "##### Verificando atualizações no flatpak =============================== (4/5)"
   echo 
   flatpak update 
   echo 
-  echo "  # Executando comandos para limpeza ============================= (4/4)"
+  echo "##### Executando comandos para limpeza ================================== (5/5)"
   echo 
   sudo apt autoclean
-  sudo apt autoremove
+  sudo nala autoremove
 }
 
 # rodando a função ------------------------------------------------------------
