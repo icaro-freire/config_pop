@@ -1,5 +1,4 @@
 
-
 # configurar o Neovim ======================================================
 
 configurar_neovim () { 

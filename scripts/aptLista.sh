@@ -17,5 +17,6 @@ PROGRAMAS_APT=(
   tree
   locate
   shellcheck
+  nala-legacy
 )
 

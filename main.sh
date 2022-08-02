@@ -60,6 +60,8 @@ source ./scripts/instalarR.sh #----------------> instala e configura o R        
 source ./scripts/instalarRStudio.sh #----------> instala o RStudio              .17
 source ./scripts/configurarNeovim.sh #---------> configura o Neovim             .18
 
+
+
 # finalizando a instalação =================================================
 
 source ./scripts/limpeza.sh #------------------> remove diretórios temporários 
