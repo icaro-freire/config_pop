@@ -15,8 +15,18 @@
 # definindo variáveis fundamentais para o script ou instalação =============
 
 TMP_INSTALACAO="$HOME/Downloads/tmp_instalacao"
+
 ARQUIVO_ZSHRC="$HOME/.zshrc"
-TOTAL=17
+
+DIR_CONFIG_NVIM="$HOME/.config/nvim"
+DIR_LOCAL_NVIM="$HOME/.local/share/nvim"
+
+DIR_TabNine="$HOME/.config/TabNine"
+DIR_LOCAL_TabNine="$HOME/.local/share/TabNine"
+
+DIR_DESTINO="$HOME/.config"
+
+TOTAL=18
 
 # carregando diversas listas para instalação ===============================
 
@@ -48,6 +58,7 @@ source ./scripts/adicionarBin.sh #-------------> adiciona scripts em ~/bin      
 source ./scripts/instalarLaTeX.sh #------------> instala o MiKTeX               .15
 source ./scripts/instalarR.sh #----------------> instala e configura o R        .16
 source ./scripts/instalarRStudio.sh #----------> instala o RStudio              .17
+source ./scripts/configurarNeovim.sh #---------> configura o Neovim             .18
 
 # finalizando a instalação =================================================
 
